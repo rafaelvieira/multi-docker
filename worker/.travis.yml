@@ -3,18 +3,18 @@ services:
   -docker
 
   before_install:
-    - docker build -t rhpvieira/react-test -f ./client/Dockerfile.dev ./client
+    - docker build -t rafalabs/react-test -f ./client/Dockerfile.dev ./client
 
   script:
-     - docker run rhpvieira/react-test npm test -- --coverage
+     - docker run rafalabs/react-test npm test -- --coverage
 
   after_success:
-    - docker build -t rhpvieira/multi-client  ./client
-    - docker build -t rhpvieira/multi-nginx   ./nginx
-    - docker build -t rhpvieira/multi-server  ./server
-    - docker build -t rhpvieira/multi-worker  ./worker
+    - docker build -t rafalabs/multi-client  ./client
+    - docker build -t rafalabs/multi-nginx   ./nginx
+    - docker build -t rafalabs/multi-server  ./server
+    - docker build -t rafalabs/multi-worker  ./worker
     - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-    - docker push rhpvieira/multi-grider 
-    - docker push rhpvieira/multi-nginx
-    - docker push rhpvieira/multi-server
-    - docker push rhpvieira/multi-worker
+    - docker push rafalabs/multi-grider 
+    - docker push rafalabs/multi-nginx
+    - docker push rafalabs/multi-server
+    - docker push rafalabs/multi-worker
