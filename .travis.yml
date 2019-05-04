@@ -14,7 +14,7 @@ after_success:
   - docker build -t rhpvieira/multi-server  ./server
   - docker build -t rhpvieira/multi-worker  ./worker
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-  - docker push rhpvieira/multi-grider 
+  - docker push rhpvieira/multi-client 
   - docker push rhpvieira/multi-nginx
   - docker push rhpvieira/multi-server
   - docker push rhpvieira/multi-worker
